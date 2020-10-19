@@ -1,29 +1,28 @@
-# This tf file creates a VPC from the tfvars file with default values
-
+#This tf file creates a VPC from the tfvars file with default values
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "${format("%s-vpc", var.name)}"
-  azs = "${var.vpc_azs}"
+  azs  = "${var.vpc_azs}"
   cidr = "${var.vpc_cidr}"
 
-  public_subnets = "${var.vpc_public_subnets}"
+  public_subnets  = "${var.vpc_public_subnets}"
   private_subnets = "${var.vpc_private_subnets}"
 
-  enable_nat_gateway = "${var.vpc_enable_nat_gateway}"
-  single_nat_gateway = "${var.vpc_single_nat_gateway}"
+  enable_nat_gateway     = "${var.vpc_enable_nat_gateway}"
+  single_nat_gateway     = "${var.vpc_single_nat_gateway}"
   one_nat_gateway_per_az = "${var.vpc_one_nat_gateway_per_az}"
 
   tags = {
     Application = "${var.name}"
     Environment = "dev"
-  } 
+  }
 }
 
 # Default keys from Terraform VPC module
 variable "name" {
   description = "Name of the application"
-  default = "terraform-aws-example"
+  default     = "terraform-aws-example"
 }
 
 variable "vpc_cidr" {
