@@ -18,6 +18,8 @@ This repo contains terraform code that creates following infrastructure
 - There is already ci.yml and cd.yml github actions workflows exist in the repo to run terraform format, validate, plan as part of checks.
 - cd.yml can be extended to run apply with auto-approve option, but it is disabled as part of run, if you want to run apply, prepare to add destroy as well.
 
+Actions - https://github.com/pkbhaga/terraform-aws-example/actions
+
 # Code structure
 
 - terraform.tfvars - This is a variable input file to alter the infrastructure based on requirement
