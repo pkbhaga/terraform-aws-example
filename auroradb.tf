@@ -13,6 +13,7 @@ resource "aws_security_group" "auroradb" {
   tags = {
     Group = var.name
     Name  = "${var.name}-aurora-db-sg"
+    Owner = var.owner
   }
 }
 
@@ -48,5 +49,6 @@ module "auroradb" {
   tags = {
     Environment = var.db_env
     Name        = "${var.name}-aurora-db"
+    Owner       = var.owner
   }
 }

@@ -1,3 +1,4 @@
+// Declare backend securitygroups, launchconfigurations, autoscaling group configurations for backend
 resource "aws_security_group" "app" {
   name = format("%s-app-sg", var.name)
 
@@ -31,6 +32,7 @@ resource "aws_security_group" "app" {
   tags = {
     Group = var.name
     Name  = "${var.name}-backend-app-sg"
+    Owner = var.owner
   }
 }
 
@@ -64,6 +66,7 @@ resource "aws_autoscaling_group" "app" {
       key                 = "Group"
       value               = var.name
       Name                = "${var.name}-backend-app-asg"
+      Owner               = var.owner
       propagate_at_launch = true
     }
   ]

@@ -13,6 +13,7 @@ resource "aws_security_group" "redis" {
   tags = {
     Group = var.name
     Name  = "${var.name}-redis-sg"
+    Owner = var.owner
   }
 }
 
@@ -42,4 +43,10 @@ module "redis" {
       value = "lK"
     }
   ]
+
+  tags = {
+    Group = var.name
+    Name  = "${var.name}-redis"
+    Owner = var.owner
+  }
 }

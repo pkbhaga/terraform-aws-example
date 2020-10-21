@@ -1,3 +1,4 @@
+// setup backend for storing terraform state in AWS S3 and Dynamo for locking
 terraform {
   required_version = "~> 0.13"
 

@@ -1,3 +1,4 @@
+// Declare loadbalancer in front of backend autoscaling group
 resource "aws_security_group" "elb_app" {
   name = format("%s-elb-backend-app-sg", var.name)
 
@@ -20,6 +21,7 @@ resource "aws_security_group" "elb_app" {
   tags = {
     Group = var.name
     Name  = "${var.name}-backend-app-elb-sg"
+    Owner = var.owner
   }
 }
 
@@ -52,5 +54,6 @@ module "elb_app" {
   tags = {
     Group = var.name
     Name  = "${var.name}-backend-app-elb"
+    Owner = var.owner
   }
 }

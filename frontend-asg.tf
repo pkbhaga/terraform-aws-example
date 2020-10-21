@@ -1,3 +1,4 @@
+//Declare the frontend securitygroups, autoscalinggroups, launchconfigurations for frontend
 resource "aws_security_group" "web" {
   name = format("%s-web-sg", var.name)
 
@@ -31,6 +32,7 @@ resource "aws_security_group" "web" {
   tags = {
     Group = var.name
     Name  = "${var.name}-web-sg"
+    Owner = var.owner
   }
 }
 
@@ -39,7 +41,6 @@ resource "aws_launch_configuration" "web" {
   instance_type   = var.web_instance_type
   security_groups = [aws_security_group.web.id]
 
-  #TODO REMOVE
   key_name    = var.web_key_pair_name
   name_prefix = "${var.name}-web-vm-"
 
@@ -51,6 +52,7 @@ EOF
   lifecycle {
     create_before_destroy = true
   }
+
 }
 
 
@@ -69,6 +71,7 @@ resource "aws_autoscaling_group" "web" {
       key                 = "Group"
       value               = var.name
       Name                = "${var.name}-web-asg"
+      Owner               = var.owner
       propagate_at_launch = true
     }
   ]

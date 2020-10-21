@@ -1,4 +1,4 @@
-# This uses Terraform to configure the resources required for remote state
+// This uses Terraform to configure the resources required for storing remote state
 terraform {
   required_providers {
     aws = {
