@@ -25,7 +25,7 @@ module "redis" {
   zone_id                    = var.redis_zone_id
   vpc_id                     = module.vpc.vpc_id
   allowed_security_groups    = [aws_security_group.redis.id]
-  subnets                    = module.vpc.private_subnets
+  subnets                    = module.vpc.elasticache_subnets
   cluster_size               = var.redis_cluster_size
   instance_type              = var.redis_instance_type
   apply_immediately          = true

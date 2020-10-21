@@ -24,7 +24,7 @@ module "memcached" {
   availability_zones      = var.vpc_azs
   vpc_id                  = module.vpc.vpc_id
   allowed_security_groups = [aws_security_group.memcached.id]
-  subnets                 = module.vpc.private_subnets
+  subnets                 = module.vpc.elasticache_subnets
   cluster_size            = var.memcached_cluster_size
   instance_type           = var.memcached_instance_type
   engine_version          = var.memcached_engine_version

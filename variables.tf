@@ -46,6 +46,12 @@ variable "vpc_database_subnets" {
   default     = ["10.1.21.0/24", "10.1.22.0/24", "10.1.23.0/24"]
 }
 
+variable "vpc_elasticache_subnets" {
+  type        = list(string)
+  description = "A list of elasticache subnets"
+  default     = ["10.1.31.0/24", "10.1.32.0/24", "10.1.33.0/24"]
+}
+
 variable "vpc_enable_nat_gateway" {
   description = "Should be true if you want to provision NAT Gateways for each of your private networks"
   default     = true
