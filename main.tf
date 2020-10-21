@@ -1,3 +1,4 @@
+// Setup the provider configuration and AMI configuration
 provider "aws" {
   region  = var.region
   version = "~> 3.0"

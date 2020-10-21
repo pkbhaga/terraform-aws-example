@@ -1,3 +1,4 @@
+// Add a loadbalancer configuration for frontend autoscaling group
 resource "aws_security_group" "elb_web" {
   name = format("%s-elb-web-sg", var.name)
 
@@ -22,6 +23,7 @@ resource "aws_security_group" "elb_web" {
   tags = {
     Group = var.name
     Name  = "${var.name}-web-elb-sg"
+    Owner = var.owner
   }
 }
 
@@ -54,5 +56,6 @@ module "elb_web" {
   tags = {
     Group = var.name
     Name  = "${var.name}-web-elb"
+    Owner = var.owner
   }
 }

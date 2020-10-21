@@ -13,6 +13,7 @@ resource "aws_security_group" "memcached" {
   tags = {
     Group = var.name
     Name  = "${var.name}-memcached-sg"
+    Owner = var.owner
   }
 }
 
@@ -30,4 +31,10 @@ module "memcached" {
   engine_version          = var.memcached_engine_version
   apply_immediately       = true
   zone_id                 = var.memcached_zone_id
+
+  tags = {
+    Group = var.name
+    Name  = "${var.name}-memcached"
+    Owner = var.owner
+  }
 }
