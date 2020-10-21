@@ -27,7 +27,7 @@ variable "vpc_cidr" {
 
 variable "vpc_azs" {
   description = "A list of availability zones in the region"
-  default     = ["us-east-2a", "us-east-2b", "us-east-2c"]
+  default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
 
 variable "vpc_public_subnets" {
@@ -123,8 +123,111 @@ variable "db_monitoring_interval" {
   default     = "10"
 }
 
+# Memcached cluster
 
-# App
+variable "memcached_namespace" {
+  description = "Memcache cluster namespace"
+  default     = "dev"
+}
+
+variable "memcached_stage" {
+  description = "Memcache cluster stage"
+  default     = "dev"
+}
+
+variable "memcached_port" {
+  description = "Memcache port"
+  default     = "11211"
+}
+
+variable "memcached_cluster_name" {
+  description = "Memcache cluster name"
+  default     = "terraform-aws-example-memcached-cluster"
+}
+
+variable "memcached_cluster_size" {
+  description = "Memcache cluster size"
+  default     = "3"
+}
+
+variable "memcached_instance_type" {
+  description = "Memcache cluster instance type"
+  default     = "t2.micro"
+}
+
+variable "memcached_engine_version" {
+  description = "Memcache cluster engine version"
+  default     = "1.5.16"
+}
+
+variable "memcached_zone_id" {
+  description = "Memcache cluster engine version"
+  default     = "memcached.tawsexample.com"
+}
+
+# Redis Cluster
+
+variable "redis_namespace" {
+  description = "Redis Cluster Namespace"
+  default     = "terraform-aws-example-redis"
+}
+
+variable "redis_stage" {
+  description = "Redis Cluster Stage"
+  default     = "dev"
+}
+
+variable "redis_name" {
+  description = "Redis Cluster name"
+  default     = "redis-app"
+}
+
+variable redis_port {
+  description = "Redis Cluster port"
+  default     = "6379"
+}
+
+variable "redis_zone_id" {
+  description = "Redis Cluster zone id"
+  default     = "redis.terraform-aws.example.com"
+}
+
+variable "redis_cluster_size" {
+  description = "Redis Cluster Size"
+  default     = "3"
+}
+
+variable "redis_instance_type" {
+  description = "Redis Cluster instance type"
+  default     = "t2.micro"
+}
+
+variable "redis_automatic_failover_enable" {
+  description = "Redis Cluster Automatic Failover Enable`"
+  default     = "false"
+}
+
+variable "redis_engine_version" {
+  description = "Redis Cluster Engine Version"
+  default     = "4.0.10"
+}
+
+variable "redis_family" {
+  description = "Redis Cluster Family"
+  default     = "redis4.0"
+}
+
+variable "redis_at_rest_encryption_enabled" {
+  description = "Redis Cluster Rest Encryption Enabled"
+  default     = "false"
+}
+
+variable "redis_transit_encryption_enabled" {
+  description = "Redis Cluster Transit Encryption Enabled"
+  default     = "false"
+}
+
+# Backend App
 variable "app_port" {
   description = "The port on which the application listens for connections"
   default     = 8080

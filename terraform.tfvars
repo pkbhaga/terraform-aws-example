@@ -24,32 +24,32 @@ vpc_single_nat_gateway     = false
 #Initialize all the Compute variables required for worker and application clusters - EC2
 
 #Application Server EC2 specific values
-application_port          = 9091
-application_instance_type = "t2.micro"
+app_port          = "9091"
+app_instance_type = "t2.micro"
 
 #Application Server ASG specific values
-application_autoscale_min_size = 2
-application_autoscale_max_size = 3
+app_autoscale_min_size = "2"
+app_autoscale_max_size = "3"
 
 #Application Server ELB specific values
-application_elb_health_check_interval = 30
-application_elb_healthy_threshold     = 2
-application_elb_unhealthy_threshold   = 3
-application_elb_health_check_timeout  = 10
+app_elb_health_check_interval = "30"
+app_elb_healthy_threshold     = "2"
+app_elb_unhealthy_threshold   = "3"
+app_elb_health_check_timeout  = "10"
 
 #Web Server EC2 specific values
-web_port          = 8080
+web_port          = "8080"
 web_instance_type = "t2.micro"
 
 #Web Server ASG specific values
-web_autoscale_min_size = 2
-web_autoscale_max_size = 3
+web_autoscale_min_size = "2"
+web_autoscale_max_size = "3"
 
 #Web ELB specific values
-web_elb_health_check_interval = 30
-web_elb_healthy_threshold     = 2
-web_elb_unhealthy_threshold   = 3
-web_elb_health_check_timeout  = 10
+web_elb_health_check_interval = "30"
+web_elb_healthy_threshold     = "2"
+web_elb_unhealthy_threshold   = "3"
+web_elb_health_check_timeout  = "10"
 
 # RDS Aurora DB
 db_name                         = "aurora-db-example"
@@ -64,3 +64,27 @@ db_monitoring_interval          = "10"
 db_preferred_backup_window      = "01:00-06:00"
 db_backup_retention_period      = "0"
 db_preferred_maintenance_window = "Mon:00:00-Mon:03:00"
+
+# Memcached Cluster
+memcached_namespace      = "dev"
+memcached_stage          = "dev"
+memcached_cluster_name   = "terraform-aws-example-memcached-cluster"
+memcached_cluster_size   = "3"
+memcached_instance_type  = "t2.micro"
+memcached_engine_version = "1.5.16"
+memcached_zone_id        = "memcached.tawsexample.com"
+memcached_port           = "11211"
+
+# Redis Cluster
+redis_namespace                  = "terraform-aws-example-redis"
+redis_stage                      = "dev"
+redis_port                       = "6379"
+redis_name                       = "redis-app"
+redis_zone_id                    = "redis.terraform-aws.example.com"
+redis_cluster_size               = "3"
+redis_instance_type              = "t2.micro"
+redis_automatic_failover_enable  = "false"
+redis_engine_version             = "4.0.10"
+redis_family                     = "redis4.0"
+redis_at_rest_encryption_enabled = "false"
+redis_transit_encryption_enabled = "false"

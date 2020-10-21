@@ -30,7 +30,7 @@ resource "aws_security_group" "app" {
 
   tags = {
     Group = var.name
-    Name  = "${var.name}-app-sg"
+    Name  = "${var.name}-backend-app-sg"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_launch_configuration" "app" {
   security_groups = [aws_security_group.app.id]
 
   key_name    = var.app_key_pair_name
-  name_prefix = "${var.name}-app-vm-"
+  name_prefix = "${var.name}-backend-app-vm-"
 
   user_data = <<-EOF
                 ## We will bring up a application server here
@@ -63,7 +63,7 @@ resource "aws_autoscaling_group" "app" {
     {
       key                 = "Group"
       value               = var.name
-      Name                = "${var.name}-app-asg"
+      Name                = "${var.name}-backend-app-asg"
       propagate_at_launch = true
     }
   ]

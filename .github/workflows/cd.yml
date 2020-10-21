@@ -7,7 +7,7 @@ on:
 
 jobs:
   Terraform-cd:
-    name: Terraform Plan & Apply
+    name: Terraform Plan & Dont want to apply
     runs-on: ubuntu-latest
     steps:
 
@@ -28,8 +28,8 @@ jobs:
     - name: Terraform validate
       run: terraform validate
 
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
+    - name: Terraform plan
+      run: terraform plan
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_ACTION_WORKING_DIR: '.'

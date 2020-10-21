@@ -12,7 +12,7 @@ resource "aws_security_group" "auroradb" {
 
   tags = {
     Group = var.name
-    Name  = "aurora-db-sg"
+    Name  = "${var.name}-aurora-db-sg"
   }
 }
 

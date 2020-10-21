@@ -1,5 +1,5 @@
 resource "aws_security_group" "elb_app" {
-  name = format("%s-elb-app-sg", var.name)
+  name = format("%s-elb-backend-app-sg", var.name)
 
   vpc_id = module.vpc.vpc_id
 
@@ -19,7 +19,7 @@ resource "aws_security_group" "elb_app" {
 
   tags = {
     Group = var.name
-    Name  = "${var.name}-app-elb-sg"
+    Name  = "${var.name}-backend-app-elb-sg"
   }
 }
 
@@ -51,6 +51,6 @@ module "elb_app" {
 
   tags = {
     Group = var.name
-    Name  = "${var.name}-app-elb"
+    Name  = "${var.name}-backend-app-elb"
   }
 }
